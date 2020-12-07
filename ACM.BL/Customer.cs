@@ -8,6 +8,16 @@ namespace ACM.BL
 {
     public class Customer
     {
+		public Customer()
+		{
+
+		}
+
+		public Customer(int customerId)
+		{
+			CustomerId = customerId;
+		}
+
 		private string _lastName;
 
 		public string LastName
@@ -36,6 +46,16 @@ namespace ACM.BL
 			}
 		}
 
+		public bool Validate()
+		{
+			var isValid = true;
 
+			if (string.IsNullOrWhiteSpace(LastName))
+				isValid = false;
+			if (string.IsNullOrWhiteSpace(EmailAddress))
+				isValid = false;
+
+			return isValid;
+		}
 	}
 }
