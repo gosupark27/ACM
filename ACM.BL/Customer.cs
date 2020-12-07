@@ -8,7 +8,7 @@ namespace ACM.BL
 {
     public class Customer
     {
-		public Customer()
+		public Customer():this(0) //constructor chaining 
 		{
 
 		}
@@ -16,6 +16,7 @@ namespace ACM.BL
 		public Customer(int customerId)
 		{
 			CustomerId = customerId;
+			AddressList = new List<Address>();
 		}
 
 		private string _lastName;
@@ -25,6 +26,7 @@ namespace ACM.BL
 			get { return _lastName; }
 			set { _lastName = value; }
 		}
+		public List<Address> AddressList { get; set; }
 
 		public string FirstName { get; set; }
 		public string EmailAddress { get; set; }

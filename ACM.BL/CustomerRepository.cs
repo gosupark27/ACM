@@ -8,6 +8,11 @@ namespace ACM.BL
 {
 	public class CustomerRepository
 	{
+		public CustomerRepository()
+		{
+			addressRepo = new AddressRepository();
+		}
+		private AddressRepository addressRepo { get; set; }
 		public Customer Retrieve(int customerId)
 		{
 			Customer customer = new Customer(customerId);
@@ -17,6 +22,7 @@ namespace ACM.BL
 				customer.EmailAddress = "john_doe@gmail.com";
 				customer.FirstName = "John";
 				customer.LastName = "Doe";
+				customer.AddressList = addressRepo.RetrieveByCustomerId(customerId).ToList();
 			}
 			return customer;
 		}
